@@ -40,16 +40,22 @@ router.post("/book",(req,res)=>{
 
 
 router.get('/books',(req,res)=>{
-    Author.findOne({name:'xyz'})
-    .populate('books')
-    .exec((err,author)=>{
-        if(err){
-            return res.status(500).json({
-                message:"error",
-                obj:author
+       
+    Book.findOne({title:"mongodb"})
+        .populate('author')
+        .exec((err,book)=>{
+            if(err){
+                return res.send(500).json({
+                    message:"error in populating author"
+                })
+            }
+
+            res.status(200).json({
+                message:"sucessfully populated",
+                obj:book.author._id
             })
-        }
-    })
+
+        })
     
 });
 

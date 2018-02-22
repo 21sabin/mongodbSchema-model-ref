@@ -8,7 +8,7 @@ const Author=require('../model/author');
 router.post('/authors',(req,res)=>{
   
     let author=new Author({
-        name:'andrew'
+        name:'sabin'
     });
 
    author.save((err,author)=>{
@@ -20,7 +20,7 @@ router.post('/authors',(req,res)=>{
         }
 
         let book1=new Book({
-            title:'node',
+            title:'java',
             price:2000,
             author:author._id
         });
@@ -34,11 +34,11 @@ router.post('/authors',(req,res)=>{
             res.status(201).json({
                 message:"book1 created",
                 obj:book1
-            })
+            });
         });
 
         let book2=new Book({
-            title:'mongodb',
+            title:'php',
             price:3000,
             author:author._id
         });
@@ -54,8 +54,8 @@ router.post('/authors',(req,res)=>{
                 obj:book2
             })
             
-        })
-    })
+        });
+    });
 
     
 });
